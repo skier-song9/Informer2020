@@ -69,7 +69,7 @@ class Informer(nn.Module):
         enc_out = self.enc_embedding(x_enc, x_mark_enc)
         print(f'encoder embedding out : {enc_out.shape}')
         enc_out, attns = self.encoder(enc_out, attn_mask=enc_self_mask)
-        print(f'encoder out & attm : {enc_out.shape}, {attns.shape}')
+        print(f'encoder out : {enc_out.shape}')
 
         dec_out = self.dec_embedding(x_dec, x_mark_dec)
         print(f'decoder embedding out : {dec_out.shape}')
@@ -82,7 +82,7 @@ class Informer(nn.Module):
         # dec_out = self.end_conv2(dec_out.transpose(2,1)).transpose(1,2)
         if self.output_attention:
             out = dec_out[:,-self.pred_len:,:]
-            print(f'{self.__class__} final out, attns : {out.shape}, {attns.shape}')
+            print(f'{self.__class__} final out : {out.shape}')
             return dec_out[:,-self.pred_len:,:], attns
         else:
             out = dec_out[:,-self.pred_len:,:]

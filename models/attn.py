@@ -123,8 +123,7 @@ class ProbAttention(nn.Module):
         context, attn = self._update_context(context, values, scores_top, index, L_Q, attn_mask)
         
         out1 = context.transpose(2,1).contiguous()
-        out2 = attn
-        print(f'{self.__class__} : {out1.shape}, {out2.shape}')
+        print(f'{self.__class__} : {out1.shape}')
         return context.transpose(2,1).contiguous(), attn
 
 
@@ -164,6 +163,5 @@ class AttentionLayer(nn.Module):
         out = out.view(B, L, -1)
 
         out1 = self.out_projection(out)
-        out2 = attn
-        print(f'{self.__class__} : {out1.shape}, {out2.shape}')
+        print(f'{self.__class__} : {out1.shape},')
         return self.out_projection(out), attn

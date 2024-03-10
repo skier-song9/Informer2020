@@ -54,8 +54,7 @@ class EncoderLayer(nn.Module):
         y = self.dropout(self.conv2(y).transpose(-1,1))
 
         out1 = self.norm2(x+y)
-        out2 = attn
-        print(f'{self.__class__} : {out1.shape}, {out2.shape}')
+        print(f'{self.__class__} : {out1.shape}')
         return self.norm2(x+y), attn
 
 class Encoder(nn.Module):
@@ -84,8 +83,7 @@ class Encoder(nn.Module):
             x = self.norm(x)
 
         out1 = x
-        out2 = attn
-        print(f'{self.__class__} : {out1.shape}, {out2.shape}')
+        print(f'{self.__class__} : {out1.shape}')
         return x, attns
 
 class EncoderStack(nn.Module):
@@ -104,6 +102,5 @@ class EncoderStack(nn.Module):
         x_stack = torch.cat(x_stack, -2)
         
         out1 = x_stack
-        out2 = attns
-        print(f'{self.__class__} : {out1.shape}, {out2.shape}')
+        print(f'{self.__class__} : {out1.shape}')
         return x_stack, attns

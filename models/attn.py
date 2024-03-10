@@ -122,12 +122,12 @@ class ProbAttention(nn.Module):
         # update the context with selected top_k queries
         context, attn = self._update_context(context, values, scores_top, index, L_Q, attn_mask)
         
-        out1 = context.transpose(2,1).contiguous()
-        print(out1)
-        if out1 is None:
-            print(f'{self.__class__} is None')
-        else:
-            print(f'{self.__class__} : {out1.shape}')
+        # out1 = context.transpose(2,1).contiguous()
+        # print(out1)
+        # if out1 is None:
+        #     print(f'{self.__class__} is None')
+        # else:
+        #     print(f'{self.__class__} : {out1.shape}')
         return context.transpose(2,1).contiguous(), attn
 
 

@@ -123,6 +123,7 @@ class ProbAttention(nn.Module):
         context, attn = self._update_context(context, values, scores_top, index, L_Q, attn_mask)
         
         out1 = context.transpose(2,1).contiguous()
+        print(out1)
         if out1 is None:
             print(f'{self.__class__} is None')
         else:

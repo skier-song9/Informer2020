@@ -22,7 +22,7 @@ class ConvLayer(nn.Module):
         x = self.maxPool(x)
         x = x.transpose(1,2)
         out = x
-        print(f'{self.__class__} : {out.shape}}')
+        print(f'{self.__class__} : {out.shape}')
         return x
 
 class EncoderLayer(nn.Module):

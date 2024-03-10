@@ -99,15 +99,19 @@ class Informer(nn.Module):
             out = dec_out[:,-self.pred_len:,:]
             if out is None:
                 print(f'{self.__class__} is None')
+                print('--------------end--------------')
             else:
                 print(f'{self.__class__} final out : {out.shape}')
+                print('--------------end--------------')
             return dec_out[:,-self.pred_len:,:], attns
         else:
             out = dec_out[:,-self.pred_len:,:]
             if out is None:
                 print(f'{self.__class__} is None')
+                print('--------------end--------------')
             else:
                 print(f'{self.__class__} final out : {out.shape}')
+                print('--------------end--------------')
             return dec_out[:,-self.pred_len:,:] # [B, L, D]
 
 
@@ -186,13 +190,17 @@ class InformerStack(nn.Module):
             out = dec_out[:,-self.pred_len:,:]
             if out is None:
                 print(f'{self.__class__} is None')
+                print('--------------end--------------')
             else:
                 print(f'{self.__class__} : {out.shape}')
+                print('--------------end--------------')
             return dec_out[:,-self.pred_len:,:], attns
         else:
             out = dec_out[:,-self.pred_len:,:]
             if out is None:
                 print(f'{self.__class__} is None')
+                print('--------------end--------------')
             else:
                 print(f'{self.__class__} : {out.shape}')
+                print('--------------end--------------')
             return dec_out[:,-self.pred_len:,:] # [B, L, D]

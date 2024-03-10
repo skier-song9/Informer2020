@@ -22,7 +22,10 @@ class PositionalEmbedding(nn.Module):
 
     def forward(self, x):
         out = self.pe[:, :x.size(1)]
-        print(f'{self.__class__} : {out.shape}')
+        if out is None:
+            print(f'{self.__class__} is None')
+        else:
+            print(f'{self.__class__} : {out.shape}')
         return self.pe[:, :x.size(1)]
 
 class TokenEmbedding(nn.Module):
@@ -37,8 +40,10 @@ class TokenEmbedding(nn.Module):
 
     def forward(self, x):
         x = self.tokenConv(x.permute(0, 2, 1)).transpose(1,2)
-
-        print(f'{self.__class__} : {x.shape}')
+        if x is None:
+            print(f'{self.__class__} is None')
+        else:
+            print(f'{self.__class__} : {x.shape}')
         return x
 
 class FixedEmbedding(nn.Module):
@@ -59,7 +64,10 @@ class FixedEmbedding(nn.Module):
 
     def forward(self, x):
         out = self.emb(x).detach()
-        print(f'{self.__class__} : {out.shape}')
+        if out is None:
+            print(f'{self.__class__} is None')
+        else:
+            print(f'{self.__class__} : {out.shape}')
         return self.emb(x).detach()
 
 class TemporalEmbedding(nn.Module):
@@ -87,7 +95,10 @@ class TemporalEmbedding(nn.Module):
         month_x = self.month_embed(x[:,:,0])
 
         out = self.emb(x).detach()
-        print(f'{self.__class__} : {out.shape}')        
+        if out is None:
+            print(f'{self.__class__} is None')
+        else:
+            print(f'{self.__class__} : {out.shape}')
         return hour_x + weekday_x + day_x + month_x + minute_x
 
 class TimeFeatureEmbedding(nn.Module):
@@ -100,7 +111,10 @@ class TimeFeatureEmbedding(nn.Module):
     
     def forward(self, x):
         out = self.embed(x)
-        print(f'{self.__class__} : {out.shape}')        
+        if out is None:
+            print(f'{self.__class__} is None')
+        else:
+            print(f'{self.__class__} : {out.shape}')
         return self.embed(x)
 
 class DataEmbedding(nn.Module):
@@ -117,5 +131,8 @@ class DataEmbedding(nn.Module):
         x = self.value_embedding(x) + self.position_embedding(x) + self.temporal_embedding(x_mark)
         
         out = self.dropout(x)
-        print(f'{self.__class__} : {out.shape}')
+        if out is None:
+            print(f'{self.__class__} is None')
+        else:
+            print(f'{self.__class__} : {out.shape}')
         return self.dropout(x)

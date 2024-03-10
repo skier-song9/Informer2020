@@ -34,7 +34,10 @@ class DecoderLayer(nn.Module):
         y = self.dropout(self.conv2(y).transpose(-1,1))
 
         out = self.norm3(x+y)
-        print(f'{self.__class__} : {out.shape}')
+        if out is None:
+            print(f'{self.__class__} is None')
+        else:
+            print(f'{self.__class__} : {out.shape}')
         return self.norm3(x+y)
 
 class Decoder(nn.Module):
@@ -51,5 +54,8 @@ class Decoder(nn.Module):
             x = self.norm(x)
 
         out = x
-        print(f'{self.__class__} : {out.shape}')
+        if out is None:
+            print(f'{self.__class__} is None')
+        else:
+            print(f'{self.__class__} : {out.shape}')
         return x
